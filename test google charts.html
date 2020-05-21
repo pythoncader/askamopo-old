@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	  <style type="text/css">
+      .votebutton{
+        margin-top:10px;
+        margin-left:500px;
+      }
+      .topvoter{
+        margin-top:50px;
+        margin-left:500px;
+      }
+
+    </style>
+  </head>
+	<body>
+    <div id="votebutton">
+		  <div><button class="topvoter" onclick="Votefordogs()">Vote For Dogs</button></div>
+      <div><button class="votebutton" onclick="Voteforcats()">Vote For Cats</button></div>
+      <div><button class="votebutton" onclick="Voteforrabbits()">Vote For Rabbits</button></div>
+      <div><button class="votebutton" onclick="Voteforbirds()">Vote For Birds</button></div>
+      <div><button class="votebutton" onclick="Voteforamphibians()">Vote For Amphibians</button></div>
+      <div><button class="votebutton" onclick="Voteforreptiles()">Vote For Reptiles</button></div>
+    </div>
+		<h1>My Web Page</h1>
+		<div id="piechart"></div>
+		<script type="text/javascript">
+		vdogs=0;
+    vcats=0;
+    vrabbits=0;
+    vbirds=0;
+    vamphibians=0;
+    vreptiles=0;
+    var x = document.getElementById("votebutton");
+		function Votefordogs(){
+      vdogs++
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting.</h1></div>";
+      setInterval(loading1(), 10000);
+		}
+    function loading1(){
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting..</h1></div>";
+      setInterval(loading2(), 10000);
+    }
+    function loading2(){
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting...</h1></div>";
+      setInterval(loadingpiechart(), 10000);
+    }
+    function loadingpiechart(){
+      x.innerHTML= "<div><h1 style='margin-left:500px;'>Voted Successfully!</h1></div>";
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+    }
+    function Voteforcats(){
+      vcats++
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting.</h1></div>";
+      setInterval(loading1(), 10000);
+    }
+    function Voteforrabbits(){
+      vrabbits++
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting.</h1></div>";
+      setInterval(loading1(), 10000);
+    }
+    function Voteforbirds(){
+      vbirds++
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting.</h1></div>";
+      setInterval(loading1(), 10000);
+    }
+    function Voteforamphibians(){
+      vamphibians++
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting.</h1></div>";
+      setInterval(loading1(), 10000);
+    }
+    function Voteforreptiles(){
+      vreptiles++
+      x.innerHTML = "<div><h1 style='margin-left:500px;'>Voting.</h1></div>";
+      setInterval(loading1(), 10000);
+    }
+// Load google charts
+
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', ''],
+  ['Cats', vcats],
+  ['Dogs', vdogs],
+  ['Rabbits', vrabbits],
+  ['Birds', vbirds],
+  ['Amphibian', vamphibians],
+  ['Reptile', vreptiles]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'', 'width':550, 'height':400};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+	</body>
+<html>
